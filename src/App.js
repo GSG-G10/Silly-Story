@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch, Link } from 'react-router';
+import { Route, Switch } from 'react-router';
 import FetchData from './Data/fetchData';
 import Form from './Components/Form/Form';
 import Story from './Components/Story/Story';
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     getData();
-  }, [])
+  }, [click])
 
   const getData = () => {
     setLoading(true);
@@ -38,6 +38,7 @@ function App() {
   const handleClick = () => {
     setClick((click) => !click);
   };
+
 
   const handleChange = (e) => {
     const key = e.target.id;
@@ -59,7 +60,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/'><Form data={data.blanks} handleChange={handleChange} inputs={inputs} /></Route>
-        <Route exact path='/story'><Story title={data.title} userInputs={inputs} story={data.value} /></Route>
+        <Route exact path='/story'><Story title={data.title} userInputs={inputs} story={data.value} handleClick={handleClick} /></Route>
       </Switch>
     </div>
   );

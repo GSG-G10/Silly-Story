@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router';
 import FetchData from './Data/fetchData';
 import Form from './Components/Form/Form';
 import Story from './Components/Story/Story';
+import Favorites from './Components/Favorites/Favorites';
 import './App.css';
 
 
@@ -61,6 +62,7 @@ function App() {
       <Switch>
         <Route exact path='/'><Form data={data.blanks} handleChange={handleChange} inputs={inputs} /></Route>
         <Route exact path='/story'><Story title={data.title} userInputs={inputs} story={data.value} handleClick={handleClick} /></Route>
+        <Route exact path='/favorites'><Favorites/></Route>
       </Switch>
     </div>
   );

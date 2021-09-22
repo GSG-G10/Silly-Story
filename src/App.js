@@ -18,10 +18,13 @@ function App() {
   const [inputs, setInputs] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const [isFormValid, setFormValidation] = useState(false);
 
 
   useEffect(() => {
+    const abortController = new AbortController();
     getData();
+    return () => abortController.abort();
   }, [click])
 
   const getData = () => {
@@ -38,6 +41,7 @@ function App() {
 
   const handleClick = () => {
     setClick((click) => !click);
+    setFormValidation(false);
   };
 
 
@@ -56,13 +60,21 @@ function App() {
     return <p>There was an error loading your data!</p>;
   }
 
+  const validateForm = () => {
+    if (Object.keys(inputs).length === data.blanks.length) {
+      setFormValidation(true)
+    } else {
+      setFormValidation(false)
+    }
+  }
+
 
   return (
     <div className="App">
       <Switch>
-        <Route exact path='/'><Form data={data.blanks} handleChange={handleChange} inputs={inputs} /></Route>
+        <Route exact path='/'><Form data={data.blanks} handleChange={handleChange} inputs={inputs} isFormValid={isFormValid} validateForm={validateForm} /></Route>
         <Route exact path='/story'><Story title={data.title} userInputs={inputs} story={data.value} handleClick={handleClick} /></Route>
-        <Route exact path='/favorites'><Favorites/></Route>
+        <Route exact path='/favorites'><Favorites /></Route>
       </Switch>
     </div>
   );

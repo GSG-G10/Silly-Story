@@ -1,7 +1,8 @@
 import React from "react";
 import AnotherStoryButton from "./AnotherStoryButton";
+import AddFavoriteButton from "./AddFavoriteButton";
 
-const Story = ({ title, userInputs, story,handleClick }) => {
+const Story = ({ title, userInputs, story, handleClick }) => {
   let sillyStory = story.map((element, index) => {
     return `${element} ${userInputs[index]}`;
   });
@@ -10,7 +11,8 @@ const Story = ({ title, userInputs, story,handleClick }) => {
     <>
       <h1>{title}</h1>
       <p>{sillyStory}</p>
-      <AnotherStoryButton handleClick={handleClick}/>
+      <AnotherStoryButton handleClick={handleClick} />
+      <AddFavoriteButton fullStory={sillyStory} />
     </>
   );
 };

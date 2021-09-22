@@ -1,23 +1,25 @@
 import React from "react";
 
-const Form = ({ data, handleChange }) => {
+const Form = ({ data, handleClick, handleChange, inputs }) => {
   const handleSubmit = (e) => {
     return e.preventDefault();
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {data !== undefined ? (
-        data.map((ele, index) => (
-          <div>
-            <label>{ele}</label>
-            <input key={index} input="text" />
-          </div>
-        ))
-      ) : (
-        <p>wait</p>
-      )}
-      <button onClick={handleChange}>Submit</button>
+      {data.map((ele, index) => (
+        <div key={index}>
+          <label>{ele}</label>
+          <input
+            type="search"
+            value={inputs[ele]}
+            id={`${index}`}
+            onChange={handleChange}
+            required
+          />
+        </div>
+      ))}
+      <button onClick={handleClick}>Submit</button>
     </form>
   );
 };

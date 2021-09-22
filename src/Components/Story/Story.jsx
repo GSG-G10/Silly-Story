@@ -6,6 +6,7 @@ import "../Form/Form.css";
 import "./Story.css";
 
 const Story = ({ title, userInputs, story, handleClick }) => {
+  // eslint-disable-next-line
   let sillyStory = story.map((element, index) => {
     if (element !== 0) {
       return (
@@ -17,9 +18,10 @@ const Story = ({ title, userInputs, story, handleClick }) => {
     }
   });
 
+
   return (
     <div className="story-body">
-      <Link to="/favorites">Favorites</Link>
+       <Link to='/favorites' >Favorites</Link>
       <div className="story-container">
         <div className="story-header">
           <h1>{title}</h1>

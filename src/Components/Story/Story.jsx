@@ -1,7 +1,6 @@
 import React from "react";
 
 const Story = ({ title, userInputs, story }) => {
-    
   let sillyStory = story.map((element, index) => {
     return `${element} ${userInputs[index]}`;
   });

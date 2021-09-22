@@ -1,6 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router";
 
-const Form = ({ data, handleClick, handleChange, inputs }) => {
+const Form = ({ data, handleChange, inputs, history }) => {
   const handleSubmit = (e) => {
     return e.preventDefault();
   };
@@ -19,9 +20,9 @@ const Form = ({ data, handleClick, handleChange, inputs }) => {
           />
         </div>
       ))}
-      <button onClick={handleClick}>Submit</button>
+      <button onClick={() => history.push("/story")}>Submit</button>
     </form>
   );
 };
 
-export default Form;
+export default withRouter(Form);

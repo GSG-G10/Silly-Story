@@ -6,18 +6,9 @@ import "../Form/Form.css";
 import "./Story.css";
 
 const Story = ({ title, userInputs, story, handleClick }) => {
-  // eslint-disable-next-line
   let sillyStory = story.map((element, index) => {
-    if (element !== 0) {
-      return (
-        <React.Fragment key={index}>
-          {`${element} `}
-          <span className="user-input"> {userInputs[index]}</span>
-        </React.Fragment>
-      );
-    }
+      return `${element} ${userInputs[index]}`
   });
-
 
   return (
     <div className="story-body">
